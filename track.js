@@ -1,6 +1,8 @@
 var csvContent = "data:text/csv;charset=utf-8,Name,Date,From,To,Duration\n";
 var state = "offline";
 var currName =  "";
+var currImg = "";
+var defImg = 'https://img.icons8.com/ios-filled/50/000000/whatsapp.png'
 var startTime;
 var endTime;
 
@@ -14,6 +16,8 @@ function GetOnline(){
       if(name != currName){
          state = "offline";
          currName = name;   
+         let img = main.childNodes[1].childNodes[0].childNodes[0].childNodes[0].src;
+         currImg = (img != undefined ) ? img : defImg;
       }
 
       let objOnline = main.querySelectorAll('span[title="online"]');
@@ -25,7 +29,7 @@ function GetOnline(){
          console.log("=== "+name+" === ");
          
          new Notification(`${name} Online`, {
-            icon: 'https://img.icons8.com/ios-filled/50/000000/whatsapp.png',
+            icon: currImg,
 			body: `Time: ${DateFormat(startTime)}\n`
          });
         
@@ -40,7 +44,7 @@ function GetOnline(){
          csvContent += `${name},${new Date(startTime).toLocaleDateString()},${new Date(startTime).toLocaleTimeString()},${new Date(endTime).toLocaleTimeString()},${duration}\n`;
          
          new Notification(`${name} Offline`, {
-            icon: 'https://img.icons8.com/ios-filled/50/000000/whatsapp.png',
+            icon: currImg,
 			body: `Dari ${new Date(startTime).toLocaleDateString()},  ${new Date(startTime).toLocaleTimeString()} sampai ${new Date(endTime).toLocaleTimeString()}\n Durasi: ${duration}`
          });
                 
