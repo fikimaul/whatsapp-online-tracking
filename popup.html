@@ -1,0 +1,45 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <style>
+        body {
+          min-width: 250px;
+          min-height: 250px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        h2 {
+          margin: 0;
+        }
+        button {
+          padding: 8px 16px;
+          font-size: 13px;
+          min-width: 100px;
+          max-width: 90%;
+          border: none;
+          outline: none;
+          background-color: #1b9a59;
+          color: #fff;
+          margin-bottom:5px;
+        }
+        button#stop {
+            background-color:red;
+            color:white;
+        }
+        button#download {
+            background-color:yellow;
+            color:black;
+        }
+      </style>
+    </head>
+    <body>
+      <h2>WhatsApp Online Tracker</h2>
+      <br/>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="download">Download CSV</button>
+      <script src="popup.js"></script>
+    </body>
+  </html>
